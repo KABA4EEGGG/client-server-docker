@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+ server:
+  build: ./server/
+  entrypoint: ["python", "server.py"]
+  ports:
+   - 5555:7070
+ client:
+  build: ./client/
+  entrypoint: ["python", "client.py"]
+  network_mode: host
+  depends_on:
+  - server
